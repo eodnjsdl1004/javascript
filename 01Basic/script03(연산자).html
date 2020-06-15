@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var num1 = 10;
+        var num2 = '10';
+
+        console.log(num1==num2); //(값만비교)
+        console.log(num1!=num2);
+
+        console.log(num1===num2); //(데이터 타입까지 동일한지 비교)
+        console.log(num1!==num2);
+
+        var a;
+        var b = null;
+
+        console.log(a,b,a==b); //undefined과 null은 값이 둘다 없지만
+        console.log(a,b,a!=b);
+
+        console.log(a,b,a===b); //undefined과 null의 타입은 다르다
+        console.log(a,b,a!==b);
+        
+        var bool1=1;
+        var bool2=true;
+
+        console.log(bool1==bool2);
+        console.log(bool1===bool2);        
+    </script>
+</body>
+</html>

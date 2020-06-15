@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+    <script>
+
+        func1();
+        func2();
+        //a(); 에러
+        //b(); 에러
+
+        function func1(){
+            console.log("func1 실행");
+        }
+
+        function func2(){
+            console.log("func2 실행");
+        }
+
+        //익명 함수는 변수에 함수를 저장하여 변수를 함수처럼 쓰도록 만들어 줍니다. 
+        //단, 익명함수는 선언 이후에 호출되어야 합니다.
+        var a = func2; // 함수를 a변수에 저장
+        a();
+
+        var b = function(){
+            console.log("func3 실행");
+        }
+        b();
+    </script>
+
+</body>
+</html>

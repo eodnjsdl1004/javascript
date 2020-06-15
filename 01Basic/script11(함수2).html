@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        console.log(func1(10));
+        console.log(func2("helloS",2));
+
+        //매개변수와 return
+        function func1(x){
+            var num=0;
+            for(var i=0; i<=x; i++){
+                num+=i;
+            }
+            return num;
+        }
+
+        function func2(x,y){
+            return x+y;
+        }
+
+        var func3 = function(x,y,z){
+            return x+y+z;
+        }
+
+        console.log(func3(1,2,3));
+
+
+        // ES6문법 화살표
+        var compute =(a,b)=>{
+            console.log("화살표 함수");
+            return a+b;
+        }
+
+        console.log(compute(1,2));
+
+    </script>
+</body>
+</html>

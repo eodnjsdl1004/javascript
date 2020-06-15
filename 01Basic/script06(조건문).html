@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var point = parseInt(Math.random()*101);
+        console.log(point);
+
+        if(point>=90){
+            if(point>=95){
+                document.write("A+학점");
+            }else{
+                document.write("A학점");
+            }
+
+        } else if(point>=80){
+            document.write("B학점");
+        } else if(point>=70){
+            document.write("C학점");
+        } else if(point>= 60){
+            document.write("D학점");
+        } else{
+            document.write("E학점");
+        }
+    </script>
+</body>
+</html>
