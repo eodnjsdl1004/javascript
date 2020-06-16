@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <!-- 표준 이벤트 방법은 addEventListener 함수에("이벤트", 실행함수)를 전달해서 등록하는 방법입니다. -->
+    <!-- 표준 이벤트는 동일 이벤트에 대해서 여러 함수 등록이 가능합니다.-->
+    <button type="button" id="btn1">표준 이벤트1</button>
+    <button type="button" id="btn2">표준 이벤트2</button>
+
+
+    <!-- 순서중요 합니다. 버튼 뒤에 올것-->
+    <script>
+        var btn1 = document.getElementById("btn1");
+        btn1.addEventListener("click", handleClick );
+
+
+        var btn2 = document.getElementById("btn2");        
+        btn2.addEventListener("click", handleClick2 );
+
+        function handleClick(){
+            alert("핸들 클릭");
+            console.log(btn1.innerHTML);
+        }
+
+        function handleClick2(){
+            alert("핸들 클릭");
+            console.log(btn2.innerHTML);
+        }
+    </script>
+</body>
+</html>

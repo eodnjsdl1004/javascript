@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>자바 스크립트 카운트</h2>
+
+    <input type="text" value="0" id="result">
+    <button type="button" id="plus" onclick="v(this)">+</button>
+    <button type="button" id="minus" onclick="v(this)">-</button>
+
+    <!-- <script>
+        var result = document.getElementById("result");
+        var plus = document.getElementById("plus");
+        plus.onclick = function(){
+            result.value++;
+        }
+        var minus = document.getElementById("minus");
+        minus.onclick = function(){
+            if(result.value<=0){
+                alert("0보다 작을 수 없습니다.");
+                return false;
+            }
+            result.value--;
+        }
+
+    </script> -->
+
+    <script>
+        var result = document.getElementById("result");
+        var plus = document.getElementById("plus");
+        var minus = document.getElementById("minus");
+        function v(x){
+            if(x.id=="plus"){
+                result.value++;
+            }else if(x.id=="minus"){
+                if(result.value<=0){
+                alert("0보다 작을 수 없습니다.");
+                return false;
+                }
+                result.value--;
+            }
+        }
+    </script>
+</body>
+</html>

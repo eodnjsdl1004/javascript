@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 다음 체크 버튼을 클릭했을 때 "동의 했습니다" 경고창을 띄우고 value값을 출력 -->
+    <input type= "checkbox" value="1" onclick="agree(this)">조항1
+    <input type= "checkbox" value="2" onclick="agree(this)">조항2
+    <input type= "checkbox" value="3" onclick="agree(this)">조항3
+    <input type= "checkbox" value="4" onclick="agree(this)">조항4
+    <input type= "checkbox" value="5" onclick="agree(this)">조항5
+
+    <hr>
+    <!-- 버튼을 클릭했을 때 인풋 태그의 공백여부, 기억하기의 체크여부를 확인-->
+    ID:<input type="text" id="id"><br>
+    기억하기:<input type="checkbox" id="remember">
+    <button type="button" id="check">확인</button>
+
+
+    <script>
+
+        
+        
+
+        function agree(x){
+           
+            if(x.checked){
+                console.log(x.value);
+                alert("동의했습니다.");
+            }else{
+                return false;
+            }
+        }        
+        var id = document.getElementById("id");
+        var remember = document.getElementById("remember");
+
+        var check = document.getElementById("check");
+        check.onclick = function(){
+                /* console.log(id.value);
+                console.log(remember.checked); */
+                if(id.value == "" ){
+                    alert("ID를 확인해주세요");
+                }else if(!remember.checked){
+                    alert("기억하기를 확인해주세요");
+                }else{       
+                    confirm("전송하시겠습니까");             
+                }           
+        }
+
+    </script>
+</body>
+</html>
