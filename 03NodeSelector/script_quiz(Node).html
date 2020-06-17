@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form class="regForm">
+
+        좌석:
+        
+        <input type="checkbox" name="seat" value="1">1
+        <input type="checkbox" name="seat" value="2">2
+        <input type="checkbox" name="seat" value="3">3
+        <input type="checkbox" name="seat" value="4">4
+        <input type="checkbox" name="seat" value="5">5
+        <input type="checkbox" name="seat" value="6">6
+        <input type="checkbox" name="seat" value="7">7
+        <input type="checkbox" name="seat" value="8">8
+        <input type="checkbox" name="seat" value="9">9
+        <input type="checkbox" name="seat" value="10">10
+
+        <br>
+        <button type="button" id="btn">예약</button>
+
+    </form>
+
+    <!-- 예약버튼 클릭시 좌석이 최소 한개 이상 체크되있지 않으면 경고창을 띄우는 코드를 작성해주세요
+         만약 체크된 태그의 value값은 배열로 생성해서 JSON형태의 문자열로 변경-->
+
+    <script>
+        var btn = document.getElementById("btn");
+
+        btn.onclick = function(){
+            var seat = document.getElementsByName("seat");
+            //document.querySelectorAll(".regForm input");
+            //document.querySelectorAll("input[name='seat']");
+
+            var arr = new Array();                       
+
+            for(var i=0; i<seat.length; i++){
+                if(seat[i].checked){
+                    arr.push(seat[i].value);
+                }                    
+            }
+
+            if(arr.length == 0){
+                alert("좌석을 한개이상 선택하세요");
+                return false;
+            }else{
+                var data={"arr": arr};
+                console.log(JSON.stringify(data));
+                console.log(JSON.parse(JSON.stringify(data)));
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

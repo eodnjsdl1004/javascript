@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- onkeyup을 사용하면 됩니다. -->
+    <section>
+        <form>
+            아이디:<input type="text" name="id" id="id" style="border: 3px solid #333">
+            <span class="idMsg"></span><br>
+            비밀번호:<input type="password" name="pw" id="pw" style="border: 3px solid #333">
+            <span class="pwMsg"></span><br>
+        </form>
+    </section>
+
+    <script>
+        
+        var id = document.getElementById("id");
+        var pw = document.getElementById("pw");
+        
+        var idMsg = document.querySelector(".idMsg");
+        var pwMsg = document.querySelector(".pwMsg");
+        
+        console.log(id , pw , idMsg, pwMsg);
+        
+        id.onkeyup = function(){
+            if(id.value.length <4){
+                idMsg.innerHTML="아이디는4글자 이상입니다.";
+                id.style.borderColor = "red";
+            }else{
+                idMsg.innerHTML="";
+                id.style.borderColor = "green";
+            }
+        }
+        pw.onkeyup = function(){      
+            if(pw.value.length<9){
+                pwMsg.innerHTML = "비밀번호는 9글자 이상입니다.";
+                pw.style.borderColor = "red";
+            } else {
+                pwMsg.innerHTML = "";
+                pw.style.borderColor = "green";
+            } 
+        }
+    </script>
+
+</body>
+</html>
+
