@@ -67,7 +67,7 @@
         var dark = document.getElementById("dark");
         var white = document.getElementById("white");
         var contents = document.querySelector(".contents");
-        // var inner = document.querySelector(".inner");
+        var inner = document.querySelectorAll(".contents .left .inner");
 
             console.log(dark);
             console.log(white);
@@ -75,11 +75,12 @@
             
             
         dark.onclick = function(){
-            
+            console.log(inner);
             body.style.backgroundColor = "black";
             body.style.color = "white";
             contents.style.borderColor = "white";
-            // inner.style.borderColor = "white";
+            inner[0].style.borderColor = "white";
+            inner[1].style.borderColor = "white";
     
         }
         
@@ -87,7 +88,8 @@
             body.style.backgroundColor = "white";
             body.style.color = "black";
             contents.style.borderColor = "#777";
-            // inner.style.borderColor = "#777";
+            inner[0].style.borderColor = "#777";
+            inner[1].style.borderColor = "#777";
         }
 
     </script>

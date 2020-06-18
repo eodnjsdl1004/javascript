@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>할일 삭제 기능은 아직 구현하지 마세요</h2>
+    <h3>할일 목록 만들기</h3>
+
+    <form>
+        <div class="nameTitle">
+            <input type="text" placeholder="이름을 입력하세요">
+            <button type="button" id="btn1">확인</button> <br>
+        </div>
+        <div class="workTitle">
+            <input type="text" placeholder="할일을 입력하세요">
+            <button type="button" id="btn2">확인</button>
+        </div>
+    </form>
+
+    <script>
+        // var form = document.querySelector("form");
+        var nameTitle = document.querySelector(".nameTitle");
+        var input = document.querySelector(".nameTitle input");
+        var input2 = document.querySelector(".workTitle input");
+        console.log(input);
+        
+        var btn1 = document.getElementById("btn1");
+        btn1.onclick = function(){
+            var name = input.value;
+            nameTitle.removeChild(input);
+            nameTitle.removeChild(btn1);
+            var h3 = document.createElement("h3");
+            h3.innerHTML= name+"님 안녕하세요";
+
+            nameTitle.appendChild(h3);
+        }
+
+        var btn2 = document.getElementById("btn2");
+        btn2.onclick = function(){
+            var workTitle = document.getElementById(".workTitle");
+            var work = input2.value;
+
+            var ul = document.createElement("ul");
+            var li = document.createElement("li");
+
+            li.innerHTML = work+"<button type='button' onclick='remove(this)'>x</button> <button type='button' onclick='up(this)'>↑</button> <button type='button' onclick='down(this)'>↓</button>";
+            ul.appendChild(li);
+            workTitle.appendChild(ul);
+        }
+
+        function remove(node){
+            console.dir(node.parentElement);
+            var li = document.querySelectorAll("form ul li"); 
+            var current = node.parentElement;           
+            console.log(current.index);
+            // var li = document.querySelectorAll("form ul li");
+            // current.removeChild();
+        }
+
+
+    </script>
+</body>
+</html>
