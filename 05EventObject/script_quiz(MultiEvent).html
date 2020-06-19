@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        ul, li{list-style: none; display: inline-block;}
+    </style>
+</head>
+<body>
+    
+    <h3>다중이벤트</h3>
+    <div>
+        <ul>
+            <li><img src="img/1.jpg" alt="1" width="100px"></li>
+            <li><img src="img/2.jpg" alt="2" width="100px"></li>
+            <li><img src="img/3.jpg" alt="3" width="100px"></li>
+            <li><img src="img/4.jpg" alt="4" width="100px"></li>
+        </ul>
+    </div>
+
+    결과
+    <div class="result">
+        <img src="img/1.jpg" alt="result" width="300px">
+    </div>
+
+    <script>
+        var li = document.querySelectorAll("li");
+        var imgList = document.querySelectorAll("li img");
+        var result = document.querySelector(".result img");
+
+        for(var i=0; i<li.length; i++){   
+
+           /*  if(event.target ==imgList[i] ){
+                li[i].addEventListener("click",change);
+            }
+            else if(event.target == li[i]){
+                return;
+            }        */
+            li[i].addEventListener("click",change);
+        }
+        function change(){
+            // console.log(result.children[0].getAttribute("src"));
+            // console.log(event.target.getAttribute("src"));
+            // result.children[0].setAttribute("src", event.target.getAttribute("src"));            
+            result.src = event.target.src;
+        }
+    </script>
+</body>
+</html>

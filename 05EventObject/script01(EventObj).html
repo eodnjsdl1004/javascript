@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>값을 변경해서 보내는 방식이 아닌, 동일한 태그에 대하여 그 즉시 이벤트를 반영하고자한다.</h2>
+    <ul>
+        <li class="list">1,홍길동</li>
+        <li class="list">2,이순신</li>
+        <li class="list">3,김길자</li>
+        <li class="list">4,고길자</li>
+        <li class="list">5,홍길자</li>
+    </ul>
+
+    선택된 태그의 값
+    <p class="result"></p>
+    <script>
+        var list = document.querySelectorAll(".list");
+        var result = document.querySelector(".result");
+
+        //함수가 많아지면 좋은 실행방법이 아님
+        for(var i=0; i<list.length; i++){
+            list[i].addEventListener("click", del);
+        }
+
+        //이벤트가 발생했을 때 실행되는 함수의 arguments에 event객체를 자동으로 실어줍니다.
+
+        function del(){
+            // console.log(event.target);
+            // console.dir(event);
+
+            // event.target.style.color = "red";
+            result.innerHTML=event.target.innerHTML;
+            event.target.remove();
+        }
+
+    </script>
+</body>
+</html>
