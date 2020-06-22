@@ -6,7 +6,7 @@
     <title>Document</title>
 
     <style>
-
+        ul, li{list-style: none; display: inline-block;}
         table{border-spacing: 0; border-collapse: collapse;}
         thead tr th,
         tbody tr td{border: 1px solid #777;}
@@ -14,7 +14,20 @@
 
 </head>
 <body>
-    
+    <h3>다중이벤트</h3>
+    <div>
+        <ul class="imgList">
+            <li><img src="img/1.jpg" alt="1" width="100px"></li>
+            <li><img src="img/2.jpg" alt="2" width="100px"></li>
+            <li><img src="img/3.jpg" alt="3" width="100px"></li>
+            <li><img src="img/4.jpg" alt="4" width="100px"></li>
+        </ul>
+    </div>
+
+    결과
+    <div class="result">
+        <img src="img/1.jpg" alt="result" width="300px">
+    </div>
 
     <h2>event 속성을 이용해서 다음을 구현하세요.</h2>
 
@@ -57,20 +70,30 @@
 
 
     <script>
+        var imgList = document.querySelector(".imgList");
+        var result = document.querySelector(".result img");
+
+        imgList.onclick = function(){
+            // console.dir(event.target);
+            // console.log(result.src);
+            // console.log(event.target.src);
+            if(event.target.tagName == "IMG"){
+                result.src = event.target.src;
+            }else {
+                return;
+            }
+        }
+
         var todoList = document.querySelector(".todoList");
-        var btn = document.querySelectorAll(".btn");
 
-        for(var i=0; i<btn.length; i++){
-            btn[i].addEventListener("click",del);
+        todoList.onclick = function(){
+            if(event.target.classList.contains("btn")){
+                event.target.parentElement.parentElement.remove();
+            }else{
+                return;
+            }
         }
-        
-        function del(){
-            var current = event.target.parentElement.parentElement;
-            // console.log(current);
-            console.dir(current);
-            current.remove();
-        }
-
     </script>
+    
 </body>
 </html>

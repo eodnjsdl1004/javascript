@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .toggle-menu{display: none;}
+        .active{display: block; animation: fadeIn 2s linear;}
+
+        ul li{list-style: none; display: inline-block; border: 1px solid #333; padding: 5px; cursor: pointer;}
+
+        @keyframes fadeIn {
+        from {opacity: 0; color: #333;}
+        to {opacity: 1; color: red;}
+        }
+        
+    </style>
+
+</head>
+<body>
+    
+    <h3>토글탭</h3>
+
+    <section>
+        <ul class="toggle">
+            <li data-id="#toggle1">메뉴1</li>
+            <li data-id="#toggle2">메뉴2</li>
+            <li data-id="#toggle3">메뉴3</li>
+        </ul>
+
+        <div class="toggle-menu active" id="toggle1">
+            토글메뉴1
+        </div>
+        <div class="toggle-menu" id="toggle2">
+            토글메뉴2
+        </div>
+        <div class="toggle-menu" id="toggle3">
+            토글메뉴3
+        </div>
+    </section>
+
+
+    <script>
+        /* 
+            ul에 이벤트 버블링을 이용해서 클릭이벤트를 걸고 클릭되는 타겟의 data-id를 얻습니다.
+            toggle-menu 옆의 active속성을 삭제
+            data-id의 값에 알맞는 태그에 active속성을 추가하면 됩니다.
+         */
+
+        var toggle = document.querySelector(".toggle");
+
+        toggle.onclick = function(){
+
+            var toggle_menu = document.querySelectorAll(".toggle-menu");
+
+            for(var i=0; i<toggle_menu.length; i++){
+                    if(toggle_menu[i].classList.contains("active")){
+                        toggle_menu[i].classList.remove("active");
+                    }
+                }
+
+            if(event.target.tagName == "LI"){
+                var id = event.target.dataset.id;
+                var menu = document.querySelector(id);
+                
+                menu.classList.add("active");                    
+                
+            }else {
+                return;
+            }
+        }
+
+    </script>
+</body>
+</html>
