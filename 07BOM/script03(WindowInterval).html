@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>    
+
+    <style>
+        .bgImg{animation: fadeIn .5s linear;}
+
+        @keyframes fadeIn {
+            from{
+                opacity: 0;
+            }to{
+                opacity: 1;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="slide">
+        <img src="img/slide1.jpg" alt="coupang" class="bgImg">
+    </div>
+
+    <script>
+        var count=1;
+        function changeImg(){
+            //img생성            
+            var img = document.createElement("img");
+            var slide = document.querySelector(".slide");
+            var original = document.querySelector(".slide img");
+
+            original.remove(); //원본이미지 삭제
+            
+            // img.src = "img/slide"+ ++count+".jpg";
+            img.src=`img/slide${++count}.jpg`;//`악센트기호로 사용
+            img.className = "bgImg";
+            if(count==4) count=0;
+
+            slide.appendChild(img);
+            
+        }
+
+        (function(){
+            setInterval(changeImg,2000); // changeImg에 소괄호를 넣지 않는다.
+        })();
+    </script>
+</body>
+</html>
