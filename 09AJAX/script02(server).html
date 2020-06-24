@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        <h3>무비 리스트</h3>
+    </div>
+    <div class="movieList">
+        <!-- <div class="movie">
+            <img src="#">
+            <div class="inner">
+                <h3 class="title">제목</h3>
+                <h3 class="year">년도</h3>
+                <ul class="genre">
+                    <li>list1</li>
+                    <li>list2</li>
+                    <li>list3</li>
+                </ul>
+                <p class="summary">내용</p>
+            </div>
+        </div> -->
+    </div>
+
+    <script>
+        //ajax인접 사이트 https://yts.mx/api
+
+        fetch("https://yts.mx/api/v2/list_movies.json?sort_by=rating").then(function(response){
+            if(response.status !== 200){
+                alert("서버와의 통신에 실패했습니다.");
+                return;
+            } else{
+                return response.json();
+            }
+        }).then(function(jsondata){
+            list = jsondata.data.movies;
+
+            document.querySelector(".movieList");
+
+            var tag="";
+
+            for(var i in list){
+                var img = list[i].medium_cover_image;
+                var title = list[i].title;
+                var year = list[i].year;
+                var genres = list[i].genres;
+                var summary = list[i].summary;
+                // console.log(img, title, year, genre, summary);
+                // console.log(list);
+                console.log(genres);
+                
+                
+                tag += '<div class="movie">';
+                tag += '<img src="'+img+'">';                
+                tag += '<div class ="inner">';
+                tag += '<h3 class="title">'+title+'</h3>';
+                tag += '<h3 class="year">'+year+'</h3>';
+                tag += '<ul class="genre">';
+                for(var j in genres){
+                    tag += '<li>'+genres[j]+'</li>';
+                }
+                tag += '</ul>';
+                tag += '<p class="summary">'+summary+'</p>';
+                tag += '</div>';
+                tag += '</div>';
+                // console.log(tag);
+            }      
+            document.querySelector(".movieList").innerHTML = tag;
+        })
+
+    </script>
+</body>
+</html>

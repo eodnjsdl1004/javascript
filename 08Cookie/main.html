@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="popup.js"></script>
+</head>
+<body>
+
+    <h3>메인화면</h3>
+    <script>
+        window.onload = function(){
+            //getCookie가 mainPopup을 찾았다면 1일동안 팝업을 열지않음
+            //mainpopup쿠키가 없는 경우 팝업창 실행
+            if(!getCookie("mainPopup")){
+                window.open("popup.html","메인팝업창","width=300px, height=300px, left=200px, top=200px");
+            }
+        }
+
+        
+
+    </script>
+</body>
+</html>

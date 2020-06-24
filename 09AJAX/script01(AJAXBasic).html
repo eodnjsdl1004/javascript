@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        p{display: inline-block;}
+    </style>
+
+</head>
+<body>
+    <button type="button" onclick="ajax()">에이잭스 요청</button><br>
+    아이디: <p class="id"></p><br>
+    이름: <p class="name"></p><br>
+    나이: <p class="age"></p><br>
+
+    <script>
+        function ajax(){
+            //1st
+            // fetch("hi.txt").then(function(response){
+            //     response.text().then(function(text){
+            //         alert(text);
+            //     })
+            // })
+            
+            //2nd            
+            //then은 익명함수를 실행할 때 실행의 결과를 받아 처리할 함수를 넣어줍니다.
+            //이런함수를 콜백함수라고 부릅니다.
+            //비동기는 다른함수의 실행과 동시에 순서없이 실행이 됩니다.
+
+
+            // var callback = function(){
+            //     console.log(1);
+            // }
+            
+            // fetch("hi.txt").then(callback);
+            // console.log(2);
+
+            //위에 코드가 이렇게 변경됩니다.
+            // fetch("hi.txt").then(function(){
+
+            // })
+
+            //3rd
+            //콜백함수 첫번째 매개변수에 성공실패에 관련된 중요한 내용을 담아줍니다.
+            //text(),json()를 사용하여 다시한번 콜백함수로 문서에 내용을 전달 받습니다.
+
+            // fetch("hi.txt").then(function(response){
+            //    //console.log(response);
+            //     if(response.status == 400){
+            //         alert("응답이 없습니다");
+            //         return;
+            //    }else { // 성공이라면
+            //         //console.log(response.text());
+            //         response.text().then(function(data){
+            //             console.log(data);
+            //         })
+            //    }
+            // })
+
+            fetch("hi.json").then(function(response){
+                if(response.status == 404){
+                    alert("요청에 실패했습니다.");
+                    return;
+                }else {
+                    return response.json(); // 다음 콜백함수 then으로 데이터를 리턴합니다.
+                }
+            }).then(function(data){
+               
+                // console.log(data);
+                var id = data.user_id;
+                var name = data.user_name;
+                var age = data.user_age;
+                
+                document.querySelector(".id").innerHTML = id;
+                document.querySelector(".name").innerHTML = name;
+                document.querySelector(".age").innerHTML = age;
+            })
+        }
+    </script>
+</body>
+</html>
