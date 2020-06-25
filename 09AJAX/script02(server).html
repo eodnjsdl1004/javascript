@@ -4,10 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+
+        *{padding: 0px; margin: 0px;}
+        ul, li{list-style: none;}
+        .movieList{overflow: hidden; width: 80%; margin: 0 auto;}
+        .movieList .movie{position: relative; float: left; width: 33.33%; height: 300px;}
+        .movie img{position: absolute; width: 100px; top: 0px; left: 0px ;}
+        .movie .inner{padding-left: 110px;}
+        .movie .genres li{display: inline-block; margin-left: 5px;}
+        .movie p{overflow: scroll; height: 100px;}
+    </style>
+
 </head>
 <body>
 
-    <div>
+    <div style="text-align: center;">
         <h3>무비 리스트</h3>
     </div>
     <div class="movieList">
@@ -16,7 +29,7 @@
             <div class="inner">
                 <h3 class="title">제목</h3>
                 <h3 class="year">년도</h3>
-                <ul class="genre">
+                <ul class="genres">
                     <li>list1</li>
                     <li>list2</li>
                     <li>list3</li>
@@ -37,9 +50,7 @@
                 return response.json();
             }
         }).then(function(jsondata){
-            list = jsondata.data.movies;
-
-            document.querySelector(".movieList");
+            list = jsondata.data.movies;    
 
             var tag="";
 
@@ -59,9 +70,9 @@
                 tag += '<div class ="inner">';
                 tag += '<h3 class="title">'+title+'</h3>';
                 tag += '<h3 class="year">'+year+'</h3>';
-                tag += '<ul class="genre">';
-                for(var j in genres){
-                    tag += '<li>'+genres[j]+'</li>';
+                tag += '<ul class="genres">';
+                for(var j of genres){
+                    tag += '<li>'+j+'</li>';
                 }
                 tag += '</ul>';
                 tag += '<p class="summary">'+summary+'</p>';

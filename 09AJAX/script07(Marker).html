@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+          height: 50%;
+          width: 50%;
+          margin: 0 auto;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+      </style>
+
+</head>
+<body>
+    <h2 align="center">코로나 19 마스크 판매 현황</h2>
+    <div id="map"></div>
+    <script>
+      
+      //map 초기 세팅
+      
+
+      // Loop through the results array and place a marker for each
+      // set of coordinates.
+      
+      //마커를 루프로 돌려서 화면에 찍어주는 코드
+      
+    var lat;
+    var lng;
+
+    function ajax(position) {
+            
+        lat = position.coords.latitude;
+        lng = position.coords.longitude;
+
+            fetch(`https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?lat=${lat}&lng=${lng}&m=5000`).then(function (response) {
+                    if (response.status !== 200) {
+                        alert("서버와의 통신에 실패했습니다.");
+                        return;
+                    } else {
+                        return response.json();
+                    }
+                }).then(function (jsondata) {
+                    // console.dir(jsondata.stores);
+                    var map;
+                    
+                        map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 17,
+                            center: new google.maps.LatLng(lat,lng)/* ,
+                            mapTypeId: 'terrain' //지형에 관한 옵션 필수는 아님 */
+                        });
+
+                        // var uluru = {latitude: lat, longitude: lng};
+                        // var marker = new google.maps.Marker({position: uluru, map: map});
+
+                        // Create a <script> tag and set the USGS URL as the source.
+                        var script = document.createElement('script');
+                        // This example uses a local copy of the GeoJSON stored at
+                        // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+                        script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
+                        document.getElementsByTagName('head')[0].appendChild(script);
+                    
+                        window.eqfeed_callback = function (results) {
+                        console.log(jsondata);
+                        for (var i of jsondata.stores) {
+                            console.log("위도 " + i.lat);
+                            console.log("경도 " + i.lng);
+                            var latLng = new google.maps.LatLng(i.lat,i.lng);
+                            var marker = new google.maps.Marker({
+                                position: latLng,
+                                map: map
+                                    
+                            });
+                        }
+                    }
+                })
+        }
+
+    //내 위치 정보 확인 실패함수
+    function coorFail (){
+            alert("경로 파악 실패");
+        } 
+
+
+
+    (function(){
+            navigator.geolocation.getCurrentPosition(ajax,coorFail)
+        })();
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxHCjbukvafMNBVPqpzQDzWfDv0KPQe7U">
+    </script>
+  </body>
+</html>
