@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/kakao.js"></script>
+</head>
+<body>
+
+
+    <a id="custom-login-btn" href="javascript:loginWithKakao()">
+        <img
+          src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
+          width="222"
+        />
+    </a>
+    <button type="button" onclick="weather()">날씨 정보</button>
+
+    <script>
+        function weather(){
+            fetch("https://api.openweathermap.org/data/2.5/weather?q=seoul&appid=6ca5f7fe1cce0f9703e6e74a81ff3354").then(function(response){
+                if(response.status == 404){
+                    alert("요청에 실패했습니다.");
+                    return;
+                }else {
+                    return response.json(); // 다음 콜백함수 then으로 데이터를 리턴합니다.
+                }
+            }).then(function(data){
+                console.log(data);
+                console.log(data.coord);
+                console.log(data.name);
+                console.log(data.weather[0].main);
+                console.log("습도"+data.main.humidity);
+                console.log(data.main.temp_min-273.15);
+                console.log(data.main.temp_max-273.15);
+                console.log(data.wind.speed);
+            })
+        }
+
+
+        
+
+            // input your appkey
+            Kakao.init('87287a13aec2bc16fb653b8361200129');
+            function loginWithKakao() {
+                Kakao.Auth.login({
+                    success: function (authObj) {
+                        alert(JSON.stringify(authObj))
+                    },
+                    fail: function (err) {
+                        alert(JSON.stringify(err))
+                    },
+                })
+            }
+    </script>
+</body>
+</html>

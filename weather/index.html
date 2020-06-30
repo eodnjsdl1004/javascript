@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <link rel ="stylesheet" href ="css/header.css">
+    <link rel ="stylesheet" href ="css/style.css">
+    
+</head>
+<body>
+    <header>
+        <h1>날씨검색</h1>
+    </header>
+
+    <section class="section1">
+
+        
+        <div class= "background-img">
+            <video  width="320" height="240" controls id="vid" autoplay = "autoplay" muted ="muted">
+                <source src="img/videoplayback.mp4" type="video/mp4">
+               
+              </video>
+        <div class = "bg-box">
+            
+        </div>
+        <div class="c-box">
+            <div class="text">
+                <h2>How is the weather today?</h2>
+            </div>
+            <div class="search">
+                <div class="form-group search-box">
+                    
+                    <input type="text" class="form-control city" id="usr" placeholder="도시검색">
+                    <button type="button" class="btn btn-default btn1" >검색</button>
+                </div>
+            </div>
+        </div>
+
+        
+
+        
+    </div>
+    <script>
+        document.getElementById("vid").play();
+        
+        var btn1 = document.querySelector(".btn1");
+        btn1.onclick = function(){
+            var c_box = document.querySelector(".c-box");
+            c_box.style.display="none";
+        }
+
+    </script>
+    </section>
+    
+</body>
+</html>
